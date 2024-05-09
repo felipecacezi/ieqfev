@@ -53,4 +53,9 @@ class User extends Authenticatable implements FilamentUser
     {
         return true;
     }
+
+    public static function isSuperUser()
+    {
+        return auth()->user()->type === 'S';
+    }
 }

@@ -20,12 +20,14 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 
+use App\Filament\Pages\HomePageSettings;
+use App\Filament\Admin\Resources\RepertoryResource;
+use Filament\Navigation\NavigationBuilder;
+use Filament\Navigation\NavigationGroup;
+use Filament\Navigation\NavigationItem;
+
 class AdminPanelProvider extends PanelProvider
 {
-
-    protected static string $routePath = 'finance';
-
-    protected static ?string $title = 'Finance dashboard';
 
     public function panel(Panel $panel): Panel
     {

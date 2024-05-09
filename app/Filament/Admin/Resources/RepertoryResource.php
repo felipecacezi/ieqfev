@@ -2,20 +2,21 @@
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Admin\Resources\RepertoryResource\Pages;
-use App\Filament\Admin\Resources\RepertoryResource\RelationManagers;
-use App\Models\Repertory;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
+use App\Models\User;
 use Filament\Tables;
+use Filament\Forms\Form;
+use App\Models\Repertory;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Components\RichEditor;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Fieldset;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Tables\Actions\ActionGroup;
-use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\RichEditor;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Admin\Resources\RepertoryResource\Pages;
+use App\Filament\Admin\Resources\RepertoryResource\RelationManagers;
 
 
 class RepertoryResource extends Resource
@@ -112,7 +113,14 @@ class RepertoryResource extends Resource
                         ->icon('heroicon-o-newspaper'),
                     Tables\Actions\EditAction::make()
                         ->label('Editar')    
-                        ->openUrlInNewTab(),
+                        ->openUrlInNewTab()
+                        ->visible(function (Model $record) {
+                            if (User::isSuperUser()) {
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        }),
                 ])
             ])
             ->bulkActions([
