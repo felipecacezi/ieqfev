@@ -13,9 +13,9 @@ class BoringAvatarsProvider implements Contracts\AvatarProvider
     public function get(Model | Authenticatable $record): string
     {
 
-        // if ($record->photo) {
-        //     return Storage::url($record->photo);
-        // }
+        if ($record->photo && Storage::url($record->photo)) {
+            return Storage::url($record->photo);
+        }
 
         $name = str(Filament::getNameForDefaultAvatar($record))
             ->trim()
