@@ -14,7 +14,7 @@ class ListRepertories extends ListRecords
 
     protected function getHeaderActions(): array
     {        
-        if (User::isSuperUser()) {
+        if (User::isSuperUser() || User::isAdmin()) {
             return [
                 Actions\CreateAction::make()
                 ->label('Nova Música'),

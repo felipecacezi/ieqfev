@@ -9,7 +9,8 @@ return [
     'actions' => [
 
         'register' => [
-            'before' => 'or',
+            // 'before' => 'or',
+            'before' => 'ou',
             'label' => 'sign up for an account',
         ],
 

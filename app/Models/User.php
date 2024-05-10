@@ -58,4 +58,9 @@ class User extends Authenticatable implements FilamentUser
     {
         return auth()->user()->type === 'S';
     }
+
+    public static function isAdmin()
+    {
+        return auth()->user()->type === 'A';
+    }
 }

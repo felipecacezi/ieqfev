@@ -115,7 +115,7 @@ class RepertoryResource extends Resource
                         ->label('Editar')    
                         ->openUrlInNewTab()
                         ->visible(function (Model $record) {
-                            if (User::isSuperUser()) {
+                            if (User::isSuperUser() || User::isAdmin()) {
                                 return true;
                             } else {
                                 return false;
