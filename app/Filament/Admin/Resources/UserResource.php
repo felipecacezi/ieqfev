@@ -2,18 +2,19 @@
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Admin\Resources\UserResource\Pages;
-use App\Filament\Admin\Resources\UserResource\RelationManagers;
-use App\Models\User;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
+use App\Models\User;
 use Filament\Tables;
+use App\Models\Position;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Select;
+use App\Filament\Admin\Resources\UserResource\Pages;
+use App\Filament\Admin\Resources\UserResource\RelationManagers;
 
 class UserResource extends Resource
 {
@@ -21,9 +22,11 @@ class UserResource extends Resource
 
     protected static ?string $label = 'Usuário';
 
-    protected static ?string $pluralLabel = 'Usuarios';
+    protected static ?string $pluralLabel = 'Usuários';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?string $navigationGroup = 'Administração';
 
     public static function form(Form $form): Form
     {
@@ -51,6 +54,13 @@ class UserResource extends Resource
                         'A' => 'Admin',
                         'S' => 'Super',
                     ])
+                    ->columnSpan([
+                        'default' => 6,
+                    ]),
+                Select::make('position_id')
+                    ->label('Função')
+                    ->options(Position::all()->pluck('position_name', 'id'))
+                    ->searchable()
                     ->columnSpan([
                         'default' => 6,
                     ]),

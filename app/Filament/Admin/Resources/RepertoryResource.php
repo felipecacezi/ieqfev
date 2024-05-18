@@ -25,9 +25,11 @@ class RepertoryResource extends Resource
 
     protected static ?string $label = 'Repertório';
 
-    protected static ?string $pluralLabel = 'Repertório';
+    protected static ?string $pluralLabel = 'Repertório'; 
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?string $navigationGroup = 'Louvor';
 
     public static function form(Form $form): Form
     {
