@@ -9,6 +9,7 @@
         "filament/filament": "^3.2",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
+        "saade/filament-fullcalendar": "^3.0",
         "spatie/flysystem-dropbox": "^3.0"
     },
     "require-dev": {
