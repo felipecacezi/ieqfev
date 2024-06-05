@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('service_schedules', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('service_date');
-            $table->string('service_title');
-            $table->text('service_observation');
+            $table->unsignedBigInteger('service_id')
+                ->cascadeOnUpdate(true)
+                ->cascadeOnDelete(true);
+            $table->foreign('service_id')->references('id')->on('services');
+            $table->text('service_schedule_json');
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('service_schedules');
     }
 };

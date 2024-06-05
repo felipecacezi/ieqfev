@@ -12,4 +12,9 @@ class Department extends Model
     protected $fillable = [
         'department_name'
     ];
+
+    public function serviceSchedules()
+    {
+        return $this->belongsToMany(ServiceSchedule::class);
+    }
 }

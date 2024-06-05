@@ -12,31 +12,23 @@ document.addEventListener('DOMContentLoaded', function() {
             initialView: 'listWeek',
             locale: 'pt-BR',
             firstDay: 1,
-            events: [
-              {
-                id: '1',
-                title: 'Domingo - Manhã',
-                start: '2024-05-26 09:00',
-                end: '2024-05-26 11:00',
-                backgroundColor: '#f00'
-              },
-              {
-                  id: '2',
-                  title: 'Domingo - Noite',
-                  start: '2024-05-26 18:00',
-                  end: '2024-05-26 20:00',
-                  backgroundColor: '#f00'
-              },
-              {
-                  id: '3',
-                  title: 'Quarta-Feira',
-                  start: '2024-05-22 20:00',
-                  end: '2024-05-22 21:30',
-                  backgroundColor: '#f00'
-              }
-            ],
+            timeZone: 'UTC',
+            events: '/service/all',
             eventClick: function(info) {
-              alert('Event: ' + info.event.title);
+              window.location.href = '/admin/service-detail?id=' + info.event.id;
+            },
+            customButtons: {
+              myCustomButton: {
+                text: 'Novo',
+                click: function() {
+                  window.location.href = '/admin/new-schedule';
+                }
+              }
+            },
+            headerToolbar: {
+              left: 'prev,next today myCustomButton',
+              center: 'title',
+              right: 'listWeek'
             }
           };
     } else {
@@ -45,40 +37,28 @@ document.addEventListener('DOMContentLoaded', function() {
             headerToolbar: { center: 'dayGridMonth,listWeek' },
             locale: 'pt-BR',
             firstDay: 1,
-            events: [
-              {
-                id: '1',
-                title: 'Domingo - Manhã',
-                start: '2024-05-26 09:00',
-                end: '2024-05-26 11:00',
-                backgroundColor: '#f00'
-              },
-              {
-                  id: '2',
-                  title: 'Domingo - Noite',
-                  start: '2024-05-26 18:00',
-                  end: '2024-05-26 20:00',
-                  backgroundColor: '#f00'
-              },
-              {
-                  id: '3',
-                  title: 'Quarta-Feira',
-                  start: '2024-05-22 20:00',
-                  end: '2024-05-22 21:30',
-                  backgroundColor: '#f00'
-              }
-            ],
+            timeZone: 'UTC',
+            events: '/service/all',
             eventClick: function(info) {
-              alert('Event: ' + info.event.title);
+              window.location.href = '/admin/service-detail?id=' + info.event.id;
+            },
+            customButtons: {
+              myCustomButton: {
+                text: 'Novo',
+                click: function() {
+                  window.location.href = '/admin/new-schedule';
+                }
+              }
+            },
+            headerToolbar: {
+              left: 'prev,next today myCustomButton',
+              center: 'title',
+              right: 'dayGridMonth,listWeek'
             }
           };
     }
 
-    // alert(altura + '-' + largura);
-
     var calendarEl = document.getElementById('calendar');
-
     var calendar = new FullCalendar.Calendar(calendarEl, configs);
-
     calendar.render();
 });

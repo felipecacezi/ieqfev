@@ -11,7 +11,17 @@ class Service extends Model
 
     protected $fillable = [
         'service_date',
-        'service_description',
+        'service_title',
         'service_observation'
     ];
+
+    public function serviceSchedules()
+    {
+        return $this->hasMany(ServiceSchedule::class);
+    }
+
+    public function teste()
+    {
+        dd($this->find(1));
+    }
 }

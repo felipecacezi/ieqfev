@@ -1,6 +1,7 @@
+@vite(['resources/css/app.css'])
 <style>
-    @media screen and (max-width: 1000px) { 
-        #calendar .fc-header-toolbar 
+    @media screen and (max-width: 1000px) {
+        #calendar .fc-header-toolbar
         {
             display: flex;
             flex-direction: column;
@@ -37,4 +38,6 @@
 <script src="{{ asset('vendor/fullcalendar/dist/index.global.min.js') }}"></script>
 <script src="{{ asset('js/servicepage/service.js') }}"></script>
 
-<div id='calendar'></div>
+<div>
+    <div id='calendar'></div>
+</div>

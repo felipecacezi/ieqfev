@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('services', function (Blueprint $table) {
-            $table->id();
-            $table->dateTime('service_date');
-            $table->string('service_title');
-            $table->text('service_observation');
-            $table->timestamps();
+        Schema::table('service_schedules', function (Blueprint $table) {
+            $table->integer('departament_id');
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('services');
+        Schema::table('service_schedules', function (Blueprint $table) {
+            $table->dropColumn(['departament_id']);
+        });
     }
 };
